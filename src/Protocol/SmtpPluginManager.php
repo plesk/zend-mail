@@ -7,7 +7,7 @@
 
 namespace Zend\Mail\Protocol;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * Plugin manager implementation for SMTP extensions.
