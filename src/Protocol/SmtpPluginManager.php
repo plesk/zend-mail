@@ -23,27 +23,35 @@ class SmtpPluginManager implements ContainerInterface
      * @var array
      */
     protected $plugins = [
-        'crammd5' => 'Zend\Mail\Protocol\Smtp\Auth\Crammd5',
-        'login'   => 'Zend\Mail\Protocol\Smtp\Auth\Login',
-        'plain'   => 'Zend\Mail\Protocol\Smtp\Auth\Plain',
-        'smtp'    => 'Zend\Mail\Protocol\Smtp',
+        Smtp\Auth\Crammd5::class => Smtp\Auth\Crammd5::class,
+        'crammd5' => Smtp\Auth\Crammd5::class,
+
+        Smtp\Auth\Login::class => Smtp\Auth\Login::class,
+        'login' => Smtp\Auth\Login::class,
+
+        Smtp\Auth\Plain::class => Smtp\Auth\Plain::class,
+        'plain' => Smtp\Auth\Plain::class,
+
+        Smtp::class => Smtp::class,
+        'smtp' => Smtp::class,
     ];
 
     /**
      * Do we have the plugin?
      *
-     * @param  string $id
+     * @param string $id
      * @return bool
      */
     public function has($id)
     {
         return array_key_exists($id, $this->plugins);
     }
+
     /**
      * Retrieve the smtp plugin
      *
-     * @param  string $id
-     * @param  array $options
+     * @param string $id
+     * @param array $options
      * @return AbstractProtocol
      */
     public function get($id, array $options = null)
